@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.tile-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: black;
+  height: 100vh;
+  flex-wrap: vertical;
+}
+
+.ocean-tile {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-image: url("assets/waves.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 20px;
+}
+
+.ocean-tile:hover {
+  cursor: context-menu;
+}
+
+.ocean-tile-title {
+  font-size: 25px;
+  font-weight: 900;
+  color: gold;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+
+.happy-tile {
+  background-image: url("assets/happy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.play-icon {
+  font-size: 50px !important;
+  color: white;
+}
+
+.pause-icon {
+  font-size: 50px !important;
+  color: white;
+  display: none;
+}
+
+.slider-container {
+  position: absolute;
+  bottom: 0;
+  display: flexbox;
+  align-items: baseline;
+  justify-content: center;
+  align-content: flex-end;
+}
+
+.volume-slider {
+  accent-color: purple;
+}
+
+.volume-slider:hover {
+  cursor: pointer;
+}
+
+.volume-up {
+  color: white;
+}

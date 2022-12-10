@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Louie's playlist</title>
+    <script src="index.js" async></script>
+    <link rel="stylesheet" href="styling.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <style></style>
+  <body class="main-body">
+    <div class="tile-container">
+      <div class="ocean-tile">
+        <p class="ocean-tile-title">Ocean sounds</p>
+        <span class="material-icons play-icon">play_circle</span>
+        <span class="material-icons pause-icon" style="display: none"
+          >pause</span
+        >
+        <div class="slider-container">
+          <input
+            class="volume-slider"
+            type="range"
+            name="volume"
+            min="0"
+            max="100"
+          />
+        </div>
+      </div>
+      <div class="happy-tile ocean-tile">
+        <p class="ocean-tile-title">Happy song</p>
+        <span class="material-icons play-icon">play_circle</span>
+        <span class="material-icons pause-icon" style="display: none"
+          >pause</span
+        >
+        <div class="slider-container">
+          <span class="material-icons volume-up"> volume_up </span>
+          <input
+            class="volume-slider"
+            type="range"
+            name="volume"
+            min="0"
+            max="100"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
