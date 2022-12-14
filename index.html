@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Louie's playlist</title>
+    <link rel="icon" type="image/x-icon" href="assets/baby icon.jpg" />
     <script src="index.js" async></script>
     <link rel="stylesheet" href="styling.css" />
     <link
@@ -15,9 +16,11 @@
   <body class="main-body">
     <div class="tile-container">
       <div class="ocean-tile">
-        <p class="ocean-tile-title">Ocean sounds</p>
-        <span class="material-icons play-icon">play_circle</span>
-        <span class="material-icons pause-icon" style="display: none"
+        <p class="ocean-tile-title prevent-select">Ocean sounds</p>
+        <span class="material-icons play-icon prevent-select">play_circle</span>
+        <span
+          class="material-icons pause-icon prevent-select"
+          style="display: none"
           >pause</span
         >
         <div class="slider-container">
@@ -31,13 +34,14 @@
         </div>
       </div>
       <div class="happy-tile ocean-tile">
-        <p class="ocean-tile-title">Happy song</p>
-        <span class="material-icons play-icon">play_circle</span>
-        <span class="material-icons pause-icon" style="display: none"
+        <p class="ocean-tile-title prevent-select">Happy song</p>
+        <span class="material-icons play-icon prevent-select">play_circle</span>
+        <span
+          class="material-icons pause-icon prevent-select"
+          style="display: none"
           >pause</span
         >
         <div class="slider-container">
-          <span class="material-icons volume-up"> volume_up </span>
           <input
             class="volume-slider"
             type="range"

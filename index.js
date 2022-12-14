@@ -1,10 +1,7 @@
 // GLOBAL VARIABLES
 const audioFilePath = "assets/white_noise_looped.mp3";
 let playing = false;
-let oceanAudio = new Audio(audioFilePath);
-const oceanTile = document.getElementsByClassName("ocean-tile")[0];
-const playIcon = document.getElementsByClassName("play-icon")[0];
-const pauseIcon = document.getElementsByClassName("pause-icon")[0];
+const oceanAudio = new Audio(audioFilePath);
 
 // check if the HTML has finished loading before continuing
 if (document.readyState == "loading") {
@@ -14,52 +11,67 @@ if (document.readyState == "loading") {
 }
 
 function ready() {
-  // Add event listeners to elements
-  document
-    .getElementsByClassName("ocean-tile")[0]
-    .addEventListener("click", toggleAudio);
+  const playIconsArray = document.getElementsByClassName("play-icon"); // returns an array of matching classes
+  const pauseIconsArray = document.getElementsByClassName("pause-icon"); // returns an array of matching classes
+  const volumeSlidersArray = document.getElementsByClassName("volume-slider"); // returns an array of matching classes
 
-  document
-    .getElementsByClassName("volume-slider")[0]
-    .addEventListener("click", setVolume);
-}
+  // add event listeners to interactive elements
+  for (let i = 0; i < playIconsArray.length; i++) {
+    playIconsArray[i].addEventListener("click", toggleAudio);
+  }
 
-// MAIN FUNCTIONS
+  for (let i = 0; i < pauseIconsArray.length; i++) {
+    pauseIconsArray[i].addEventListener("click", toggleAudio);
+  }
 
-function setVolume() {
-  let sliderValue = document.getElementsByClassName("volume-slider")[0].value;
-  oceanAudio.volume = Math.floor(sliderValue) / 100;
-}
-
-function toggleAudio() {
-  if (!playing) {
-    playing = true;
-    oceanAudio.loop = true;
-    hidePlayIcon();
-    showPauseIcon();
-    oceanAudio.play();
-  } else {
-    playing = false;
-    hidePauseIcon();
-    showPlayIcon();
-    oceanAudio.pause();
+  for (let i = 0; i < volumeSlidersArray.length; i++) {
+    volumeSlidersArray[i].addEventListener("change", setVolume);
   }
 }
 
-// FUNCTION HELPERS
+function setVolume() {
+  // find the tile name of the slider which was clicked
+  const tileName = event.target.parentNode.parentNode.innerText;
 
-function hidePlayIcon() {
-  document.getElementsByClassName("play-icon")[0].style.display = "none";
+  if (tileName.includes("Ocean sounds")) {
+    let sliderValue = event.target.value; // get the integer input value of the slider
+    oceanAudio.volume = Math.floor(sliderValue) / 100; // set the volume as a float
+  } else {
+    console.log("slider belongs to another Audio object");
+  }
 }
 
-function showPlayIcon() {
-  document.getElementsByClassName("play-icon")[0].style.display = "inline";
+function toggleAudio() {
+  let tileClicked = event?.target.parentNode.firstElementChild.innerText;
+
+  switch (tileClicked) {
+    case "Ocean sounds":
+      if (!playing) {
+        playing = true;
+        oceanAudio.loop = true;
+        toggleAudioIcons();
+        oceanAudio.play();
+      } else {
+        playing = false;
+        toggleAudioIcons();
+        oceanAudio.pause();
+      }
+      break;
+    case "Happy baby":
+      console.log("Event came from the Happy baby title");
+    default:
+      console.log("Unknown event location");
+  }
 }
 
-function hidePauseIcon() {
-  document.getElementsByClassName("pause-icon")[0].style.display = "none";
-}
+function toggleAudioIcons() {
+  const classArray = event.target.classList; //returns a DOM Object.
 
-function showPauseIcon() {
-  document.getElementsByClassName("pause-icon")[0].style.display = "inline";
+  if (classArray.contains("play-icon")) {
+    event.target.style.display = "none"; // hide the play icon
+    event.target.nextElementSibling.style.display = "inline"; //show the pause icon
+  } else {
+    event.target.style.display = "none"; // hide the pause icon
+    event.target.previousElementSibling.style.display = "inline"; // show the play icon
+  }
 }
