@@ -19,7 +19,7 @@ body {
   padding: 20px;
   background-color: black;
   height: 100vh;
-  flex-wrap: vertical;
+  flex-wrap: wrap;
 }
 
 .ocean-tile {
